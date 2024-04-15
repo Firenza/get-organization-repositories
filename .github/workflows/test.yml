@@ -12,7 +12,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    - uses: actions/checkout@v3.0.2
+    - uses: actions/checkout@v4
+
+    - name: Set Node.js
+      uses: actions/setup-node@v4.0.2
+      with:
+        node-version-file: package.json
 
     - run: npm ci
 
@@ -23,7 +28,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    - uses: actions/checkout@v3.0.2
+    - uses: actions/checkout@v4
+
+    - name: Set Node.js
+      uses: actions/setup-node@v4.0.2
+      with:
+        node-version-file: package.json
 
     - uses: ./
       id: get_org_repos
