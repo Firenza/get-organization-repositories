@@ -7,7 +7,7 @@ A GitHub Action to return a list of repositories in a given organization.
 ```yml
 - name: Get Organization Repositories
   id: get_org_repos
-  uses: firenza/get-organization-repositories@v1
+  uses: firenza/get-organization-repositories@v1.1.1
   with:
     github_token: ${{ secrets.YOUR_GITHUB_TOKEN }}
     organization: 'actions'
