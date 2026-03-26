@@ -1,9 +1,15 @@
 const getRepositories = require('./get-repositories');
 const core = require('@actions/core');
-const fetch = require('node-fetch')
 
-jest.mock('node-fetch');
 jest.mock("@actions/core");
+
+beforeEach(() => {
+  global.fetch = jest.fn();
+});
+
+afterEach(() => {
+  jest.restoreAllMocks();
+});
 
 test('Processes one repo batch properly', async () => {
   // Arrange
@@ -14,7 +20,7 @@ test('Processes one repo batch properly', async () => {
     'repo2'
   ])
 
-  fetch.mockReturnValueOnce({
+  global.fetch.mockReturnValueOnce({
     ok: true,
     status: 200,
     json: function () {
@@ -56,7 +62,7 @@ test('Processes two repo batches properly', async () => {
     'repo4'
   ])
 
-  fetch.mockReturnValueOnce({
+  global.fetch.mockReturnValueOnce({
     ok: true,
     status: 200,
     json: function () {
@@ -113,7 +119,7 @@ test('Handle graphql error', async () => {
   let organization = 'testorg'
   let githubToken = 'ImAGithubToken'
 
-  fetch.mockReturnValueOnce({
+  global.fetch.mockReturnValueOnce({
     ok: false,
     status: 400,
     json: function () {
