@@ -1,5 +1,4 @@
 const core = require('@actions/core');
-const fetch = require('node-fetch')
 
 let getRepositories = async function (github_token, organization) {
 

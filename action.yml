@@ -15,5 +15,5 @@ outputs:
   repositories_json:
     description: 'JSON array of the repository names'
 runs:
-  using: 'node20'
+  using: 'node24'
   main: 'dist/index.js'
